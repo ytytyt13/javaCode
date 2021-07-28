@@ -1,0 +1,6 @@
+<mapper namespace = "com.qunar.dao.IUserDao">
+    <!-- 配置查询所有操作 -->
+    <select id="findAll" resultType="com.qunar.domain.User">
+        select * from tx_user;
+    </select>
+</mapper>

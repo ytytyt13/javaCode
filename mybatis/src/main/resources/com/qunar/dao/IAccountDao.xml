@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.qunar.dao.IAccountDao">
+    <sql id="defaultInsert"> insert into tx_account(userId,userMoney) values </sql>
+
+    <resultMap type="user" id="userMap">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="age" property="age"></result>
+        <result column="salary" property="salary"></result>
+        <association property="account" javaType="com.qunar.domain.Account">
+            <id column="id" property="id"></id>
+            <result column="userId" property="userId"></result>
+            <result column="userMoney" property="userMoney"></result>
+        </association>
+    </resultMap>
+
+    <resultMap type="user" id="userOneByMoreMap">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="age" property="age"></result>
+        <result column="salary" property="salary"></result>
+        <collection property="accountList" ofType="com.qunar.domain.Account">
+            <result column="accountId" property="accountId"></result>
+            <result column="userId" property="userId"></result>
+            <result column="userMoney" property="userMoney"></result>
+        </collection>
+    </resultMap>
+
+    <insert id="insertAccountList" parameterType="account">
+        <include refid="defaultInsert"></include>
+        <foreach collection="list" item="account" separator=",">
+            (#{account.userId},#{account.userMoney})
+        </foreach>
+    </insert>
+
+    <select id="findOneByOne" resultMap="userMap">
+        select u.*,a.userId as userId,a.userMoney as userMoney from tx_user u,tx_account a where a.userId = u.id;
+    </select>
+
+    <select id="findOneByMore" resultMap="userOneByMoreMap">
+        select u.*,a.id as accountId,a.userId, a.userMoney from tx_user u left outer join tx_account a on a.userId = u.id;
+    </select>
+
+</mapper>

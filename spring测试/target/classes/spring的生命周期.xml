@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--beans中添加了许多约束，即像url一样的代码，其作用就是约束该.xml文件中可以使用哪些标签-->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+    <!-- 注册处理器 -->
+    <bean id="springbean" class="com.qunar.spring入门.pojo.测试spring的生命周期对象" init-method="start2" destroy-method="end2">
+        <property name="name" value="第一个名称"></property>
+    </bean>
+    <!--注册-->
+    <bean id="myBeanFactoryPostProcessor" class="com.qunar.spring入门.pojo.MyBeanFactoryPostProcessor"></bean>
+    <bean id="myBeanFactoryPostProcessor2" class="com.qunar.spring入门.pojo.MyBeanFactoryPostProcessor2"></bean>
+
+    <bean id="myInstantiationAwareBeanPostProcessor" class="com.qunar.spring入门.pojo.MyInstantiationAwareBeanPostProcessor"></bean>
+</beans>

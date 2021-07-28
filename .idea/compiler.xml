@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="juc" />
+        <module name="springMVC" />
+        <module name="solrJ的使用" />
+        <module name="redis" />
+        <module name="rabbitMQ" />
+        <module name="jdbcAndMybatis" />
+        <module name="httpClient的使用" />
+        <module name="httpCliet的使用" />
+        <module name="httpClient使用" />
+        <module name="流式编程" />
+        <module name="mybatis" />
+        <module name="Zookeeper" />
+        <module name="动态代理" />
+        <module name="正则表达式" />
+        <module name="jackson使用" />
+        <module name="spring测试" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="code" target="1.8" />
+      <module name="httpClient使用" target="1.8" />
+      <module name="httpClient的使用" target="1.8" />
+      <module name="httpCliet的使用" target="1.5" />
+      <module name="jackson使用" target="1.8" />
+      <module name="juc" target="1.8" />
+      <module name="mybatis" target="1.8" />
+      <module name="rabbitMQ" target="1.8" />
+      <module name="redis" target="1.8" />
+      <module name="solrJ的使用" target="1.8" />
+      <module name="springMVC" target="1.8" />
+      <module name="spring测试" target="1.8" />
+      <module name="Zookeeper" target="1.8" />
+      <module name="动态代理" target="1.8" />
+      <module name="数据结构" target="8" />
+      <module name="正则表达式" target="1.8" />
+      <module name="流式编程" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

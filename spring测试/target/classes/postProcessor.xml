@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.qunar.spring入门.pojo.User3" id="user3" init-method="start">
+        <property name="name" value="波波烤鸭" />
+    </bean>
+
+    <!-- 注册处理器 -->
+    <bean class="com.qunar.spring入门.pojo.MyBeanPostProcessor"></bean>
+    <bean class="com.qunar.spring入门.pojo.MyBeanPostProcessor2"></bean>
+</beans>

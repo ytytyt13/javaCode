@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/springMVC" />
+    <type id="Spring" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/juc/pom.xml" />
+        <option value="$PROJECT_DIR$/spring测试/pom.xml" />
+        <option value="$PROJECT_DIR$/jdbcAndMybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/动态代理/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/redis/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitMQ/pom.xml" />
+        <option value="$PROJECT_DIR$/Zookeeper/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC/pom.xml" />
+        <option value="$PROJECT_DIR$/jackson使用/pom.xml" />
+        <option value="$PROJECT_DIR$/code/pom.xml" />
+        <option value="$PROJECT_DIR$/正则表达式/pom.xml" />
+        <option value="$PROJECT_DIR$/httpCliet的使用/pom.xml" />
+        <option value="$PROJECT_DIR$/httpClient使用/pom.xml" />
+        <option value="$PROJECT_DIR$/solrJ的使用/pom.xml" />
+        <option value="$PROJECT_DIR$/流式编程/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"></properties>
+
+    <!--开启日志-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+
+        <!-- 打开延迟加载的开关 -->
+        <!-- <setting name="lazyLoadingEnabled" value="true" /> -->
+        <!-- 将积极加载改为消极加载(及按需加载) -->
+        <!--<setting name="aggressiveLazyLoading" value="false" />-->
+    </settings>
+
+    <typeAliases>
+        <typeAlias alias="user" type="com.qunar.domain.User"></typeAlias>
+        <typeAlias alias="aliasUser" type="com.qunar.domain.AliasUser"></typeAlias>
+        <typeAlias alias="account" type="com.qunar.domain.Account"></typeAlias>
+    </typeAliases>
+
+    <!-- 配置 mybatis 的环境 -->
+    <environments default="mysql">
+        <!-- 配置 mysql 的环境 -->
+        <environment id="mysql">
+            <!-- 配置事务的类型 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置连接数据库的信息:用的是数据源(连接池) -->
+            <dataSource type="POOLED">
+                <!--
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/spring_study"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+                -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <!-- 告知 mybatis 映射配置的位置 -->
+    <mappers>
+        <mapper resource="com/qunar/dao/IUserDao.xml"/>
+        <mapper resource="com/qunar/dao/IAccountDao.xml"/>
+    </mappers>
+
+
+</configuration>
+

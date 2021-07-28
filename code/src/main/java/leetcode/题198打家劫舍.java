@@ -1,0 +1,48 @@
+
+package leetcode;
+
+/**
+ * @author yang
+ * 2021年07月04日 16:42:00
+ */
+public class 题198打家劫舍 {
+    public static void main(String[] args) {
+
+        int[] num = {2,7,9,3,1};
+        System.out.println(rob(num));
+    }
+
+    public static int rob(int[] nums) {
+        int res = 0;
+        if (nums == null || nums.length < 1) {
+            return 0;
+        }
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        if (nums.length == 2) {
+            return Math.max(nums[0],nums[1]);
+        }
+        int[] dp = new int[nums.length+1];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0],nums[1]);
+
+
+        for (int i = 2; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i-2] +nums[i],dp[i-1]);
+        }
+
+        for (int i = 0; i < dp.length; i++) {
+            System.out.println(dp[i]);
+         if (dp[i] > res) {
+             res = dp[i];
+         }
+        }
+
+        return res;
+
+    }
+
+
+
+}

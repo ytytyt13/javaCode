@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.qunar.dao.IUserDao">
+
+    <resultMap id="userMap" type="aliasUser">
+        <id column="id" property="userId"></id>
+        <result column="name" property="userName"></result>
+        <result column="age" property="userAge"></result>
+        <result column="salary" property="userSalary"></result>
+    </resultMap>
+    <!-- 配置查询所有操作 -->
+    <select id="findAll" resultType="user">
+        select * from tx_user;
+    </select>
+
+    <!--插入一个用户-->
+    <insert id="saveUser" parameterType="com.qunar.domain.User" useGeneratedKeys="true" keyProperty="id">
+        insert into tx_user(name,age,salary) values (#{name},#{age},#{salary});
+    </insert>
+
+    <!--查找一个用户-->
+    <select id="findOne" parameterType="int" resultType="com.qunar.domain.User">
+        select * from tx_user where id = #{id};
+    </select>
+
+    <!--删除一个用户-->
+    <delete id="deleteOne" parameterType="int">
+        delete from tx_user where id =#{id};
+    </delete>
+
+    <!--模糊查询-->
+    <select id="findByName" resultType="com.qunar.domain.User" parameterType="String">
+        select * from tx_user where name like #{value};
+    </select>
+
+    <!--查询数据条数-->
+    <select id="countUser" resultType="int">
+        select count(*) from tx_user;
+    </select>
+
+    <insert id="多个参数传递_方法1">
+        insert into tx_user(name,age,salary) values (#{name},#{age},#{salary});
+    </insert>
+
+    <insert id="多个参数传递_方法2">
+        insert into tx_user(name,age,salary) values (#{name111},#{age},#{salary});
+    </insert>
+
+    <select id="findAllAliasUser" resultMap="userMap">
+        select * from tx_user;
+    </select>
+
+    <sql id="defaultSql">
+        select * from tx_user
+    </sql>
+
+    <!--动态sql的使用-->
+    <select id="findByUser" resultType="user" parameterType="user">
+        <include refid="defaultSql"></include>
+        <where>
+            <if test="name!=null and name!=''">
+                and name=#{name}
+            </if>
+            <if test="age!=null">
+                and age=#{age};
+            </if>
+        </where>
+    </select>
+
+    <select id="findByIds" resultType="user" parameterType="String">
+        <include refid="defaultSql"></include>
+        <where>
+            <if test="list!=null and list.size()>0">
+                <foreach collection="list" open="id in (" close=")"  item="id"  separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertUserList" parameterType="user">
+        insert
+            into tx_user (name,age,salary)
+        values
+            <foreach collection="list" item="item" separator="," >
+                (#{item.name},#{item.age},#{item.salary})
+            </foreach>
+    </insert>
+
+</mapper>

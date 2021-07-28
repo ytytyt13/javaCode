@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--beans中添加了许多约束，即像url一样的代码，其作用就是约束该.xml文件中可以使用哪些标签-->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+							http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">
+
+    <!-- ====================lookup-method属性注入==================== -->
+    <bean id="taxi" class="com.qunar.spring入门.pojo.Taxi" scope="prototype"></bean>
+    <bean id="car" class="com.qunar.spring入门.pojo.Car">
+        <property name="taxi" ref="taxi"></property>
+        <lookup-method name="createTaxi" bean="taxi" ></lookup-method>
+    </bean>
+
+
+    <!-- ====================replace-method属性注入==================== -->
+    <bean id="replaceDog" class="com.qunar.spring入门.pojo.ReplaceDog"></bean>
+    <bean id="originalDog" class="com.qunar.spring入门.pojo.OriginalDog">
+        <replaced-method name="sayHello" replacer="replaceDog">
+            <arg-type match="java.lang.String"></arg-type>
+        </replaced-method>
+    </bean>
+
+
+</beans>
