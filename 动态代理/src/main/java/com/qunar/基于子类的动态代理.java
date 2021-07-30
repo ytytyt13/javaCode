@@ -42,24 +42,27 @@ public class 基于子类的动态代理 {
                     @Override
                     public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
                         String name = method.getName();
-                        Float money = (Float) args[0];
                         Object rtValue = null;
                         if("basicAct".equals(name)){
+                            Float money = (Float) args[0];
                             //基本演出
                             if(money > 2000){
                                 rtValue = method.invoke(actor, money/2);
                             }
-                        }
-                        if("dangerAct".equals(name)){
+                        } else if("dangerAct".equals(name)){
+                            Float money = (Float) args[0];
                             //危险演出
                             if(money > 5000){
                                 rtValue = method.invoke(actor, money/2);
                             }
+                        } else {
+                            method.invoke(actor,args);
                         }
                         return rtValue;
                     }
                 });
-        cglibActor.basicAct(2000);
-        cglibActor.dangerAct(100000);
+        //cglibActor.basicAct(2000);
+        //cglibActor.dangerAct(100000);
+        cglibActor.noAct();
     }
 }

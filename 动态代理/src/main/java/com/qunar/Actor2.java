@@ -10,6 +10,10 @@ package com.qunar;
  */
 public class Actor2 {//没有继承任何接口
 
+    public void noAct(){
+        System.out.println("不想演出");
+    }
+
     public void basicAct(float money) {
         System.out.println("拿到钱,开始基本的表演:" + money);
     }
