@@ -16,4 +16,14 @@ public class 工厂方法模式 {
     *
     *
     * */
+
+    //客户端代码
+    public static void main(String[] args) {
+        加法工厂 加法工厂 = new 加法工厂();
+        Operation operation = 加法工厂.createOperation();
+        operation.number1 = 3;
+        operation.number2 = 4;
+        System.out.println(operation.getResult());
+
+    }
 }
